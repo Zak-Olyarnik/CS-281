@@ -1,0 +1,197 @@
+   1              		.file	1 "minmax_iterative.c"
+   2              	
+   3              	 # -G value = 8, Arch = 3000, ISA = 1
+   4              	 # GNU C version 3.2.2 (mips-dec-ultrix42)
+   5              	 #	compiled by GNU C version 2.95.4 20011002 (Debian prerelease).
+   6              	 # options passed:  -lang-c -iprefix -D__GNUC__=3 -D__GNUC_MINOR__=2
+   7              	 # -D__GNUC_PATCHLEVEL__=2 -D__GXX_ABI_VERSION=102 -D__ANSI_COMPAT -DMIPSEL
+   8              	 # -DR3000 -DSYSTYPE_BSD -D_SYSTYPE_BSD -Dbsd4_2 -Dhost_mips -Dmips
+   9              	 # -Dultrix -Dunix -D__ANSI_COMPAT -D__MIPSEL__ -D__R3000__
+  10              	 # -D__SYSTYPE_BSD__ -D_SYSTYPE_BSD -D__bsd4_2_ -D__host_mips__ -D__mips__
+  11              	 # -D__ultrix__ -D__unix__ -D__MIPSEL -D__R3000 -D__SYSTYPE_BSD -D__bsd4_2
+  12              	 # -D__host_mips -D__mips -D__ultrix -D__unix -Asystem=unix -Asystem=bsd
+  13              	 # -Acpu=mips -Amachine=mips -D__NO_INLINE__ -D__STDC_HOSTED__=1
+  14              	 # -D__LANGUAGE_C -D_LANGUAGE_C -DLANGUAGE_C -D__SIZE_TYPE__=unsigned int
+  15              	 # -D__PTRDIFF_TYPE__=int -D__SIZE_TYPE__=unsigned int
+  16              	 # -D__PTRDIFF_TYPE__=int -D__mips_fpr=32 -mrnames -g -O0 -fverbose-asm
+  17              	 # options enabled:  -fpeephole -ffunction-cse -fkeep-static-consts
+  18              	 # -fpcc-struct-return -fgcse-lm -fgcse-sm -fsched-interblock -fsched-spec
+  19              	 # -fbranch-count-reg -fcommon -fverbose-asm -fgnu-linker -fargument-alias
+  20              	 # -fident -fmath-errno -ftrapping-math -mgas -mrnames -march=3000
+  21              	 # -mno-flush-funccacheflush -mflush-func=cacheflush
+  22              	
+  25              		.text
+  26              	$Ltext0:
+  50              		.align	2
+  51              		.globl	MinMaxIt
+  52              	$LM1:
+   1:minmax_iterative.c **** /* #include  <stdio.h>  */
+   2:minmax_iterative.c **** 
+   3:minmax_iterative.c **** void MinMaxIt (A, n, _min, _max) 
+   4:minmax_iterative.c **** register int * A;
+   5:minmax_iterative.c **** register unsigned int n;
+   6:minmax_iterative.c **** register int * _min;
+   7:minmax_iterative.c **** register int * _max;
+   8:minmax_iterative.c ****  {
+  54              		.ent	MinMaxIt
+  55              	MinMaxIt:
+  56              		.frame	$fp,16,$ra		# vars= 0, regs= 4/0, args= 0, extra= 0
+  57              		.mask	0x40e00000,-4
+  58              		.fmask	0x00000000,0
+  59 ???? F0FFBD27 		subu	$sp,$sp,16
+  60 ???? 0C00BEAF 		sw	$fp,12($sp)
+  61              		sw	$s7,8($sp)
+  62              		sw	$s6,4($sp)
+  63              		sw	$s5,0($sp)
+  64 ???? 21F0A003 		move	$fp,$sp
+  65              		sw	$a0,16($fp)	 #  A
+  66              		sw	$a1,20($fp)	 #  n
+  67              		sw	$a2,24($fp)	 #  _min
+  68              		sw	$a3,28($fp)	 #  _max
+  69              	$LBB2:
+  70              	$LM2:
+   9:minmax_iterative.c ****   register int min asm ("s5") ;
+  10:minmax_iterative.c ****   register int max asm ("s6") ;
+  11:minmax_iterative.c ****   register int * p asm ("s7") ;
+  12:minmax_iterative.c ****   min = A[0];
+  72              		lw	$v0,16($fp)	 #  A
+  73              		lw	$s5,0($v0)
+  74              	$LM3:
+  13:minmax_iterative.c ****   max = A[0];
+  76              		lw	$v1,16($fp)	 #  A
+  77              		lw	$s6,0($v1)
+  78              	$LM4:
+  14:minmax_iterative.c ****   for (p = &A[1]; p < &A[n]; p ++ ) 
+  80              		lw	$v0,16($fp)	 #  A
+  81              		addu	$s7,$v0,4
+  82              	$L2:
+  83              		lw	$v0,20($fp)	 #  n,  n
+  84              		sll	$v0,$v0,2	 #  n
+  85              		lw	$v1,16($fp)	 #  A
+  86              		addu	$v0,$v1,$v0
+  87              		sltu	$v0,$s7,$v0
+  88              		bne	$v0,$zero,$L5
+  89 ???? 00000008 		j	$L3
+  89      00000000 
+  90              	$L5:
+  91              	$LM5:
+  15:minmax_iterative.c ****    {
+  16:minmax_iterative.c ****     if ( * p < min) min = * p;
+  93              		lw	$v0,0($s7)
+  94              		slt	$v0,$v0,$s5
+  95              		beq	$v0,$zero,$L6
+  96              		lw	$s5,0($s7)
+  97              	$L6:
+  98              	$LM6:
+  17:minmax_iterative.c ****     if ( * p > max) max = * p;
+ 100              		lw	$v0,0($s7)
+ 101              		slt	$v0,$s6,$v0
+ 102              		beq	$v0,$zero,$L4
+ 103              		lw	$s6,0($s7)
+ 104              	$LM7:
+ 106              	$L4:
+ 107              		addu	$s7,$s7,4
+ 108 ???? 00000008 		j	$L2
+ 108      00000000 
+ 109              	$L3:
+ 110              	$LM8:
+  18:minmax_iterative.c ****    }
+  19:minmax_iterative.c ****   * _max = max;
+ 112              		lw	$v0,28($fp)	 #  _max
+ 113              		sw	$s6,0($v0)
+ 114              	$LM9:
+  20:minmax_iterative.c ****   * _min = min;
+ 116              		lw	$v1,24($fp)	 #  _min
+ 117              		sw	$s5,0($v1)
+ 118              	$LM10:
+  21:minmax_iterative.c ****  }
+ 120 ???? 21E8C003 		move	$sp,$fp
+ 121 ???? 0C00BE8F 		lw	$fp,12($sp)
+ 122              		lw	$s7,8($sp)
+ 123              		lw	$s6,4($sp)
+ 124              		lw	$s5,0($sp)
+ 125 ???? 1000BD27 		addu	$sp,$sp,16
+ 126 ???? 0800E003 		j	$ra
+ 126      00000000 
+ 127              	$LBE2:
+ 128              		.end	MinMaxIt
+ 139              		.rdata
+ 140              		.align	2
+ 141              	$LC0:
+ 142 ???? 01000000 		.word	1
+ 143 ???? 02000000 		.word	2
+ 144 ???? 03000000 		.word	3
+ 145 ???? 04000000 		.word	4
+ 146 ???? 05000000 		.word	5
+ 147 ???? 06000000 		.word	6
+ 148 ???? 07000000 		.word	7
+ 149 ???? 08000000 		.word	8
+ 150 ???? 09000000 		.word	9
+ 151 ???? 0A000000 		.word	10
+ 152              		.align	2
+ 153              	$LC1:
+ 154 ???? 4D696E4D 		.ascii	"MinMaxIt = %d %d \n\000"
+ 154      61784974 
+ 154      203D2025 
+ 154      64202564 
+ 154      200A00
+ 155              		.text
+ 156              		.align	2
+ 157              		.globl	main
+ 158              	$LM11:
+  22:minmax_iterative.c **** 
+  23:minmax_iterative.c **** void main () 
+  24:minmax_iterative.c ****  {
+ 160              		.ent	main
+ 161              	main:
+ 162              		.frame	$fp,72,$ra		# vars= 48, regs= 2/0, args= 16, extra= 0
+ 163              		.mask	0xc0000000,-4
+ 164              		.fmask	0x00000000,0
+ 165 ???? B8FFBD27 		subu	$sp,$sp,72
+ 166 ???? 4400BFAF 		sw	$ra,68($sp)
+ 167 ???? 4000BEAF 		sw	$fp,64($sp)
+ 168 ???? 21F0A003 		move	$fp,$sp
+ 169 ???? 0000000C 		jal	__main
+ 169      00000000 
+ 170              	$LBB3:
+ 171              	$LM12:
+  25:minmax_iterative.c ****   int A[10] = 
+ 173              		addu	$v0,$fp,16
+ 174              		la	$v1,$LC0
+ 175              		move	$a0,$v0
+ 176              		move	$a1,$v1
+ 177              		li	$a2,40			# 0x28
+ 178 ???? 0000000C 		jal	memcpy
+ 178      00000000 
+ 179              	$LM13:
+  26:minmax_iterative.c ****    {
+  27:minmax_iterative.c ****     1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+  28:minmax_iterative.c ****    };
+  29:minmax_iterative.c ****   int min, max;
+  30:minmax_iterative.c **** 
+  31:minmax_iterative.c ****   MinMaxIt (A, 10, &min, &max) ;
+ 181              		addu	$v0,$fp,56
+ 182              		addu	$v1,$fp,60
+ 183              		addu	$a0,$fp,16
+ 184              		li	$a1,10			# 0xa
+ 185              		move	$a2,$v0
+ 186              		move	$a3,$v1
+ 187 ???? 0000000C 		jal	MinMaxIt
+ 187      00000000 
+ 188              	$LM14:
+  32:minmax_iterative.c ****   printf ("MinMaxIt = %d %d \n", min, max) ;
+ 190              		la	$a0,$LC1
+ 191              		lw	$a1,56($fp)	 #  min
+ 192              		lw	$a2,60($fp)	 #  max
+ 193 ???? 0000000C 		jal	printf
+ 193      00000000 
+ 194              	$LM15:
+  33:minmax_iterative.c ****  }
+ 196 ???? 21E8C003 		move	$sp,$fp
+ 197 ???? 4400BF8F 		lw	$ra,68($sp)
+ 198 ???? 4000BE8F 		lw	$fp,64($sp)
+ 199 ???? 4800BD27 		addu	$sp,$sp,72
+ 200 ???? 0800E003 		j	$ra
+ 200      00000000 
+ 201              	$LBE3:
+ 202              		.end	main

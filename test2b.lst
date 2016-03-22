@@ -1,0 +1,234 @@
+   1              		.file	1 "test2b.c"
+   2              	
+   3              	 # -G value = 8, Arch = 3000, ISA = 1
+   4              	 # GNU C version 3.2.2 (mips-dec-ultrix42)
+   5              	 #	compiled by GNU C version 2.95.4 20011002 (Debian prerelease).
+   6              	 # options passed:  -lang-c -iprefix -D__GNUC__=3 -D__GNUC_MINOR__=2
+   7              	 # -D__GNUC_PATCHLEVEL__=2 -D__GXX_ABI_VERSION=102 -D__ANSI_COMPAT -DMIPSEL
+   8              	 # -DR3000 -DSYSTYPE_BSD -D_SYSTYPE_BSD -Dbsd4_2 -Dhost_mips -Dmips
+   9              	 # -Dultrix -Dunix -D__ANSI_COMPAT -D__MIPSEL__ -D__R3000__
+  10              	 # -D__SYSTYPE_BSD__ -D_SYSTYPE_BSD -D__bsd4_2_ -D__host_mips__ -D__mips__
+  11              	 # -D__ultrix__ -D__unix__ -D__MIPSEL -D__R3000 -D__SYSTYPE_BSD -D__bsd4_2
+  12              	 # -D__host_mips -D__mips -D__ultrix -D__unix -Asystem=unix -Asystem=bsd
+  13              	 # -Acpu=mips -Amachine=mips -D__NO_INLINE__ -D__STDC_HOSTED__=1
+  14              	 # -D__LANGUAGE_C -D_LANGUAGE_C -DLANGUAGE_C -D__SIZE_TYPE__=unsigned int
+  15              	 # -D__PTRDIFF_TYPE__=int -D__SIZE_TYPE__=unsigned int
+  16              	 # -D__PTRDIFF_TYPE__=int -D__mips_fpr=32 -mrnames -g -O0 -fverbose-asm
+  17              	 # options enabled:  -fpeephole -ffunction-cse -fkeep-static-consts
+  18              	 # -fpcc-struct-return -fgcse-lm -fgcse-sm -fsched-interblock -fsched-spec
+  19              	 # -fbranch-count-reg -fcommon -fverbose-asm -fgnu-linker -fargument-alias
+  20              	 # -fident -fmath-errno -ftrapping-math -mgas -mrnames -march=3000
+  21              	 # -mno-flush-funccacheflush -mflush-func=cacheflush
+  22              	
+  25              		.text
+  26              	$Ltext0:
+  50              		.globl	first
+  51              		.sdata
+  52              		.align	2
+  53              	first:
+  54 ???? 01000000 		.word	1
+  55              		.align	2
+  56              	$LC0:
+  57 ???? 616200   		.ascii	"ab\000"
+  58              		.align	2
+  59              	$LC1:
+  60 ???? 787900   		.ascii	"xy\000"
+  61              		.align	2
+  62              	$LC2:
+  63 ???? 313200   		.ascii	"12\000"
+  64              		.text
+  65              		.align	2
+  66              		.globl	main
+  67              	$LM1:
+   1:test2b.c      **** char * test (char *);
+   2:test2b.c      **** char * second (char *);
+   3:test2b.c      **** 
+   4:test2b.c      **** int first = 1;
+   5:test2b.c      **** 
+   6:test2b.c      **** main ()
+   7:test2b.c      ****  {
+  69              		.ent	main
+  70              	main:
+  71              		.frame	$fp,24,$ra		# vars= 0, regs= 2/0, args= 16, extra= 0
+  72              		.mask	0xc0000000,-4
+  73              		.fmask	0x00000000,0
+  74 ???? E8FFBD27 		subu	$sp,$sp,24
+  75 ???? 1400BFAF 		sw	$ra,20($sp)
+  76 ???? 1000BEAF 		sw	$fp,16($sp)
+  77 ???? 21F0A003 		move	$fp,$sp
+  78 ???? 0000000C 		jal	__main
+  78      00000000 
+  79              	$LBB2:
+  80              	$LM2:
+   8:test2b.c      ****   register char *t asm ("t0");
+   9:test2b.c      ****   register int   v asm ("t1");
+  10:test2b.c      ****   t = test("ab");
+  82              		la	$a0,$LC0
+  83 ???? 0000000C 		jal	test
+  83      00000000 
+  84              	$LM3:
+  11:test2b.c      ****   t = test("xy");
+  86              		la	$a0,$LC1
+  87 ???? 0000000C 		jal	test
+  87      00000000 
+  88              	$LM4:
+  12:test2b.c      ****   t = second("12");
+  90              		la	$a0,$LC2
+  91 ???? 0000000C 		jal	second
+  91      00000000 
+  92              		move	$t0,$v0
+  93              	$LM5:
+  13:test2b.c      ****   v = strlen(t);
+  95              		move	$a0,$t0
+  96 ???? 0000000C 		jal	strlen
+  96      00000000 
+  97              		move	$t1,$v0
+  98              	$LM6:
+  14:test2b.c      ****   return(v);
+ 100              		move	$v0,$t1
+ 101              	$LBE2:
+ 102              	$LM7:
+  15:test2b.c      ****  }
+ 104 ???? 21E8C003 		move	$sp,$fp
+ 105 ???? 1400BF8F 		lw	$ra,20($sp)
+ 106 ???? 1000BE8F 		lw	$fp,16($sp)
+ 107 ???? 1800BD27 		addu	$sp,$sp,24
+ 108 ???? 0800E003 		j	$ra
+ 108      00000000 
+ 109              		.end	main
+ 115              		.align	2
+ 116              		.globl	second
+ 117              	$LM8:
+  16:test2b.c      **** 
+  17:test2b.c      **** char * second (x)
+  18:test2b.c      **** register char *x asm ("a0");
+  19:test2b.c      ****  {
+ 119              		.ent	second
+ 120              	second:
+ 121              		.frame	$fp,24,$ra		# vars= 0, regs= 2/0, args= 16, extra= 0
+ 122              		.mask	0xc0000000,-4
+ 123              		.fmask	0x00000000,0
+ 124 ???? E8FFBD27 		subu	$sp,$sp,24
+ 125 ???? 1400BFAF 		sw	$ra,20($sp)
+ 126 ???? 1000BEAF 		sw	$fp,16($sp)
+ 127 ???? 21F0A003 		move	$fp,$sp
+ 128              		move	$v0,$a0	 #  x
+ 129              	$LBB3:
+ 130              	$LM9:
+  20:test2b.c      ****   register char *t asm ("t0");
+  21:test2b.c      ****   t = test(x);
+ 132              		move	$a0,$v0	 #  x
+ 133 ???? 0000000C 		jal	test
+ 133      00000000 
+ 134              		move	$t0,$v0
+ 135              	$LM10:
+  22:test2b.c      ****   return(t);
+ 137              		move	$v0,$t0
+ 138              	$LBE3:
+ 139              	$LM11:
+  23:test2b.c      ****  }
+ 141 ???? 21E8C003 		move	$sp,$fp
+ 142 ???? 1400BF8F 		lw	$ra,20($sp)
+ 143 ???? 1000BE8F 		lw	$fp,16($sp)
+ 144 ???? 1800BD27 		addu	$sp,$sp,24
+ 145 ???? 0800E003 		j	$ra
+ 145      00000000 
+ 146              		.end	second
+ 152              		.align	2
+ 153              		.globl	strlen
+ 154              	$LM12:
+  24:test2b.c      **** 
+  25:test2b.c      **** strlen (x)
+  26:test2b.c      **** register char *x asm ("a0");
+  27:test2b.c      ****  {
+ 156              		.ent	strlen
+ 157              	strlen:
+ 158              		.frame	$fp,8,$ra		# vars= 0, regs= 1/0, args= 0, extra= 0
+ 159              		.mask	0x40000000,-8
+ 160              		.fmask	0x00000000,0
+ 161 ???? F8FFBD27 		subu	$sp,$sp,8
+ 162 ???? 0000BEAF 		sw	$fp,0($sp)
+ 163 ???? 21F0A003 		move	$fp,$sp
+ 164              		sw	$a0,8($fp)	 #  x
+ 165              	$LBB4:
+ 166              	$LM13:
+  28:test2b.c      ****   register char *t asm ("t0");
+  29:test2b.c      ****   for (t = x; *t; t++) ;
+ 168              		lw	$t0,8($fp)	 #  x
+ 169              	$L4:
+ 170              		lb	$v0,0($t0)
+ 171              		bne	$v0,$zero,$L6
+ 172 ???? 00000008 		j	$L5
+ 172      00000000 
+ 173              	$L6:
+ 174              		addu	$t0,$t0,1
+ 175 ???? 00000008 		j	$L4
+ 175      00000000 
+ 176              	$L5:
+ 177              	$LM14:
+  30:test2b.c      ****   return(t-x);
+ 179              		lw	$v1,8($fp)	 #  x
+ 180              		subu	$v0,$t0,$v1
+ 181              	$LBE4:
+ 182              	$LM15:
+  31:test2b.c      ****  }
+ 184 ???? 21E8C003 		move	$sp,$fp
+ 185 ???? 0000BE8F 		lw	$fp,0($sp)
+ 186 ???? 0800BD27 		addu	$sp,$sp,8
+ 187 ???? 0800E003 		j	$ra
+ 187      00000000 
+ 188              		.end	strlen
+ 194              	
+ 195              		.lcomm	a.0,16
+ 196              		.align	2
+ 197              		.globl	test
+ 198              	$LM16:
+  32:test2b.c      **** 
+  33:test2b.c      **** char * test (x)
+  34:test2b.c      **** register char *x asm ("a0");
+  35:test2b.c      ****  {
+ 200              		.ent	test
+ 201              	test:
+ 202              		.frame	$fp,24,$ra		# vars= 0, regs= 2/0, args= 16, extra= 0
+ 203              		.mask	0xc0000000,-4
+ 204              		.fmask	0x00000000,0
+ 205 ???? E8FFBD27 		subu	$sp,$sp,24
+ 206 ???? 1400BFAF 		sw	$ra,20($sp)
+ 207 ???? 1000BEAF 		sw	$fp,16($sp)
+ 208 ???? 21F0A003 		move	$fp,$sp
+ 209              		sw	$a0,24($fp)	 #  x
+ 210              	$LBB5:
+ 211              	$LM17:
+  36:test2b.c      ****   static char a[16];
+  37:test2b.c      ****   if (first)
+ 213              		lw	$v0,first	 #  first
+ 214              		beq	$v0,$zero,$L9
+ 215              	$LM18:
+  38:test2b.c      ****    {
+  39:test2b.c      ****     a[0] = 0;
+ 217 ???? 0000013C 		sb	$zero,a.0	 #  a
+ 217      000020A0 
+ 218              	$LM19:
+  40:test2b.c      ****     first = 0;
+ 220 ???? 000080AF 		sw	$zero,first	 #  first
+ 221              	$L9:
+ 222              	$LM20:
+  41:test2b.c      ****    }
+  42:test2b.c      ****   strcat(a,x);
+ 224              		la	$a0,a.0
+ 225              		lw	$a1,24($fp)	 #  x
+ 226 ???? 0000000C 		jal	strcat
+ 226      00000000 
+ 227              	$LM21:
+  43:test2b.c      ****   return(a);
+ 229              		la	$v0,a.0
+ 230              	$LBE5:
+ 231              	$LM22:
+  44:test2b.c      ****  }
+ 233 ???? 21E8C003 		move	$sp,$fp
+ 234 ???? 1400BF8F 		lw	$ra,20($sp)
+ 235 ???? 1000BE8F 		lw	$fp,16($sp)
+ 236 ???? 1800BD27 		addu	$sp,$sp,24
+ 237 ???? 0800E003 		j	$ra
+ 237      00000000 
+ 238              		.end	test

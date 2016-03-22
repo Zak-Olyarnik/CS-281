@@ -1,0 +1,98 @@
+$date
+  Thu Oct 22 15:52:43 2015
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$var reg 1 ! i0 $end
+$var reg 1 " i1 $end
+$var reg 1 # i2 $end
+$var reg 1 $ i3 $end
+$var reg 1 % z_out $end
+$var reg 2 & sel_in[1:0] $end
+$scope module tb $end
+$var reg 1 ' a $end
+$var reg 1 ( b $end
+$var reg 1 ) c $end
+$var reg 1 * d $end
+$var reg 2 + sel[1:0] $end
+$var reg 1 , z $end
+$upscope $end
+$enddefinitions $end
+#0
+0!
+1"
+1#
+1$
+0%
+b00 &
+0'
+1(
+1)
+1*
+b00 +
+0,
+#10000000
+0#
+0$
+1%
+b01 &
+0)
+0*
+b01 +
+1,
+#20000000
+1!
+1$
+0%
+b10 &
+1'
+1*
+b10 +
+0,
+#30000000
+0!
+0"
+1%
+b11 &
+0'
+0(
+b11 +
+1,
+#40000000
+1!
+0$
+b00 &
+1'
+0*
+b00 +
+#50000000
+1#
+1$
+0%
+b01 &
+1)
+1*
+b01 +
+0,
+#60000000
+0!
+0$
+1%
+b10 &
+0'
+0*
+b10 +
+1,
+#70000000
+1!
+1"
+0%
+b11 &
+1'
+1(
+b11 +
+0,

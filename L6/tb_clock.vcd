@@ -1,0 +1,73 @@
+$date
+  Tue Nov 17 10:21:43 2015
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$var reg 1 ! clk1_out $end
+$var reg 1 " clk2_out $end
+$scope module tb1 $end
+$var reg 1 # clk $end
+$var reg 1 $ internal $end
+$upscope $end
+$scope module tb2 $end
+$var reg 1 % clk $end
+$upscope $end
+$enddefinitions $end
+#0
+0!
+0"
+0#
+0$
+0%
+#25000000
+1!
+1"
+1#
+1$
+1%
+#50000000
+0!
+0"
+0#
+0$
+0%
+#75000000
+1!
+1"
+1#
+1$
+1%
+#100000000
+0!
+0"
+0#
+0$
+0%
+#125000000
+1!
+1"
+1#
+1$
+1%
+#150000000
+0!
+0"
+0#
+0$
+0%
+#175000000
+1!
+1"
+1#
+1$
+1%
+#200000000
+0!
+0"
+0#
+0$
+0%

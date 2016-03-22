@@ -1,0 +1,73 @@
+$date
+  Thu Oct 22 15:27:48 2015
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$var reg 1 ! a_in $end
+$var reg 1 " b_in $end
+$var reg 1 # sum_out $end
+$var reg 1 $ carry_out $end
+$scope module tb $end
+$var reg 1 % a $end
+$var reg 1 & b $end
+$var reg 1 ' sum $end
+$var reg 1 ( carry $end
+$upscope $end
+$enddefinitions $end
+#0
+0!
+0"
+U#
+U$
+0%
+0&
+U'
+U(
+#5000000
+0#
+0$
+0'
+0(
+#15000000
+1"
+1&
+#20000000
+1#
+1'
+0(
+#30000000
+1!
+0"
+1%
+0&
+#35000000
+1'
+0(
+#45000000
+1"
+1&
+#50000000
+0#
+1$
+0'
+1(
+#60000000
+0!
+0"
+0%
+0&
+#65000000
+0$
+0'
+0(
+#75000000
+1"
+1&
+#80000000
+1#
+1'
+0(

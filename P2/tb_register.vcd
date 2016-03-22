@@ -1,0 +1,91 @@
+$date
+  Tue Dec  1 10:35:05 2015
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$var reg 1 ! clock_signal $end
+$var reg 32 " data_out1[31:0] $end
+$var reg 32 # data_out2[31:0] $end
+$var reg 1 $ ws $end
+$scope module test_clock $end
+$var reg 1 % clk $end
+$var reg 1 & internal $end
+$upscope $end
+$scope module test_reg $end
+$var reg 32 ' reg1[31:0] $end
+$var reg 32 ( reg2[31:0] $end
+$var reg 32 ) write_address[31:0] $end
+$var reg 32 * write_data[31:0] $end
+$var reg 1 + regwrite $end
+$var reg 1 , clk $end
+$var reg 32 - read_data1[31:0] $end
+$var reg 32 . read_data2[31:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+0!
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU "
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU #
+U$
+0%
+0&
+b00000000000000000000000000000001 '
+b00000000000000000000000000000010 (
+b00000000000000000000000000000001 )
+b00000000000000000000000000001111 *
+U+
+0,
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU -
+bUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU .
+#10000000
+0$
+0+
+#15000000
+1!
+1%
+1&
+1,
+#17000000
+b00000000000000000000000000000001 "
+b00000000000000000000000000000010 #
+b00000000000000000000000000000001 -
+b00000000000000000000000000000010 .
+#30000000
+0!
+0%
+0&
+0,
+#40000000
+1$
+1+
+#45000000
+1!
+1%
+1&
+1,
+#47000000
+b00000000000000000000000000000001 -
+b00000000000000000000000000000010 .
+#60000000
+0!
+0%
+0&
+0,
+#75000000
+1!
+1%
+1&
+1,
+#77000000
+b00000000000000000000000000001111 "
+b00000000000000000000000000001111 -
+b00000000000000000000000000000010 .
+#90000000
+0!
+0%
+0&
+0,
